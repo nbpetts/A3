@@ -2,127 +2,186 @@
 <html>
 
 <head>
-  <meta charset="UTF-8">
-  <title>Hardware Checkout App</title>
-  <meta name="author" content="Nathan Petts">
-  <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css" />
-  <link rel="stylesheet" href="css/base.css" />
-  <link rel="stylesheet" href="css/layout.css" />
-  <link rel="stylesheet" href="css/skeleton.css" />
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
-  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
-  <script src="js/underscore/underscore.js"></script>
-  <script src="js/backbone/backbone.js"></script>
-  <script src="js/backbone.collectionView/backbone.collectionView.min.js"></script>
-
+    <meta charset="UTF-8">
+    <title>Hardware Checkout App</title>
+    <meta name="author" content="Nathan Petts">
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js" />
+    <!-- <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/skeleton.css" /> -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+    <!-- <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script> -->
+    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="js/underscore/underscore.js"></script>
+    <script src="js/backbone/backbone.js"></script>
+    <script src="js/backbone.collectionView/backbone.collectionView.min.js"></script>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.css" />
+    <link rel="stylesheet" type="text/css" href="css/equipment.css" />    
+    <!-- jQuery -->
+    <script src="jquery/jquery.min.js" type="text/javascript" > </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- underscore-->
+    <script src="js/underscore/underscore.js"></script>
+    <!-- backbone-->
+    <script src="js/backbone/backbone.js"></script>
+    <script src="js/backbone.collectionView/backbone.collectionView.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="js/bootstrap.js"  type="text/javascript" ></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js">
+    
+    </script>
+    
 </head>
 
 <body>
-  <div id="pageWrapper" class="container">
-    <h1 class="sixteen columns">Hardware Checkout</h1>
-    <div id="tabs" class="sixteen columns container">
-      <ul>
-        <li>
-          <a href="#checkedOut" class="">Checked Out</a>
-        </li>
-        <li>
-          <a href="#checkedIn" class=" ">Checked In</a>
-        </li>
-        <li>
-          <a href="#people" class=" ">People</a>
-        </li>
-        <li>
-          <a href="#operations" class=" ">Add or Remove People or Equipment</a>
-        </li>
-      </ul>
-      <div id="checkedOut">
-        <ul id="checkedOutList">
-
-        </ul>
-      </div>
-      <div id="checkedIn">
-        <ul id="checkedInList" class="clearfix ten columns">
-
-        </ul>
-        <form method="post" action="php/????.php" id="personCheckingOut" class="five columns hidden">
-          <label for="checkingOutTo">Who is checking this out?</label>
-          <select name="checkingOutTo" id="checkingOutTo" required>
-            <option value="" selected>Select a Person</option>
-          </select>
-          <label for="dateCheckingOut">Date the equipment is going out:</label>
-          <input type="date" name="dateCheckingOut" id="dateCheckingOut" required>
-          <label for="dateCheckingIn">Date the equipment is coming back:</label>
-          <input type="date" name="dateCheckingIn" id="dateCheckingIn" required>
-
-          <input type="submit" name="button" id="checkOutButton" value="Submit">
-        </form>
-      </div>
-      <div id="people">
-        <ul id="peopleList">
-
-        </ul>
-      </div>
-      <div id="operations">
-        <form method="post" action="php/????.php" id="addEquipment" class="seven columns">
-          <h4>Add Equipment</h4>
-          <p>
-            <label for="equipName">Name of Equipment:</label>
-            <input type="text" name="equipName" id="equipName">
-            <label for="equipName">Type of Equipment:</label>
-            <input type="text" name="equipType" id="equipType">
-            <label for="checkedInOut">This is being checked out right now:</label>
-            <input type="checkbox" name="checkedInOut" id="checkedInOut">
-            <label for="checkedOutTo">Checked Out to:</label>
-            <select name="checkedOutTo" id="checkedOutTo">
-              <option value="">Select a Person</option>
-            </select>
-            <label for="dateOut">Date the equipment is going out:</label>
-            <input type="date" name="dateOut" id="dateOut">
-            <label for="dateIn">Date the equipment is coming back:</label>
-            <input type="date" name="dateIn" id="dateIn">
-            <input type="submit" name="button" id="equipButton" value="Submit">
-          </p>
-        </form>
-        <form method="post" action="php/getEquipAndPeople.php" id="addPerson" class="seven columns">
-          <h4>Add People</h4>
-          <p>
-            <label for="personName">Name of Person:</label>
-            <input type="text" name="personName" id="personName">
-            <label for="lps">Person's LPS:</label>
-            <input type="text" name="lps" id="lps">
-            <!--<label for="checkingOut">They are checking something out right now:</label>
-            <input type="checkbox" name="checkingOut" id="checkingOut">
-            <label for="equipCheckedOut">Equipment they are checking out:</label>
-            <select name="equipCheckedOut" id="equipCheckedOut">
-              <option value="">Select a piece of equipment</option>
-            </select>
-            <label for="dateOutPeople">Date the equipment is going out:</label>
-            <input type="date" name="dateOutPeople" id="dateOutPeople">
-            <label for="dateInPeople">Date the equipment is coming back:</label>
-            <input type="date" name="dateInPeople" id="dateInPeople">-->
-            <input type="submit" name="button" id="personButton" value="Submit">
-          </p>
-        </form>
-        <div id="innerTabs" class="fifteen columns container">
-          <ul>
-            <li>
-              <a href="#equipRemove">Remove Equipment</a>
-            </li>
-            <li>
-              <a href="#peopleRemove">Remove People</a>
-            </li>
-          </ul>
-          <div id="equipRemove">
-            <ul id="equipRemoveList"></ul>
-          </div>
-          <div id="peopleRemove">
-            <ul id="peopleRemoveList"></ul>
-          </div>
+    <div class="container">
+        <div class="row">
+            <h1>Hardware Checkout</h1>
         </div>
-      </div>
+        <div class="row">
+            <ul class="nav nav-tabs" role="tablist">
+                <li class="active" role="presentation">
+                    <a data-toggle="tab" href="#checkedOut" role="tab" aria-control="checkedOut">Checked Out</a>
+                </li>
+                <li>
+                    <a data-toggle="tab" href="#checkedIn" role="tab" aria-control="checkedIn">Checked In</a>
+                </li>
+                <li>
+                    <a data-toggle="tab" href="#people" role="tab" aria-control="people">People</a>
+                </li>
+                <li>
+                    <a data-toggle="tab" href="#operations" role="tab" aria-control="operations">Add or Remove People or Equipment</a>
+                </li>
+            </ul>
+        </div>    
+        
+            <div class="row tab-content">
+                <div id="checkedOut" class="tab-pane fade in active" role="tabpanel">
+                    <h4>Checked out list</h4>
+                    <ul id="checkedOutList">
+                    </ul>
+                </div>
+
+                <div id="checkedIn" class="tab-pane fade" role="tabpanel">
+                    <h4>Checked in list</h4>
+                    <ul id="checkedInList">
+                    </ul>
+                    <form method="post" action="php/????.php" id="personCheckingOut" class="five columns hidden">
+                        <label for="checkingOutTo">Who is checking this out?</label>
+                        <select name="checkingOutTo" id="checkingOutTo" required>
+                        <option value="" selected>Select a Person</option>
+                        </select>
+                        <label for="dateCheckingOut">Date the equipment is going out:</label>
+                        <input type="date" name="dateCheckingOut" id="dateCheckingOut" required>
+                        <label for="dateCheckingIn">Date the equipment is coming back:</label>
+                        <input type="date" name="dateCheckingIn" id="dateCheckingIn" required>
+
+                        <input type="submit" name="button" id="checkOutButton" value="Submit">
+                    </form>
+                </div>
+
+                <div id="people" class="tab-pane fade" role="tabpanel">
+                    <h4>People List</h4>
+                    <ul id="peopleList">
+                    </ul>
+                </div>
+
+                <div id="operations" class="tab-pane fade" role="tabpanel">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="col-md-6">
+                            <form method="post" action="php/????.php" id="addEquipment">
+                                    <h4>Add Equipment</h4>
+                                <div class="row form-group">
+                                    <label for="equipName">Name of Equipment:</label>
+                                    <input type="text" class="form-control" name="equipName" id="equipName">
+                                </div>
+                                <div class="row form-group">
+                                    <label for="equipName">Type of Equipment:</label>
+                                    <input type="text" class="form-control" name="equipType" id="equipType">
+                                </div>
+                                <div class="row form-group checkbox">
+                                    <label>
+                                    <input type="checkbox" name="checkedInOut" id="checkedInOut">
+                                    This is being checked out right now:
+                                    </label>
+                                </div>
+                                <div class="row form-group">
+                                    <label for="checkedOutTo">Checked Out to:</label>
+                                    <select class="form-control" name="checkedOutTo" id="checkedOutTo">
+                                        <option value="">Select a Person</option>
+                                    </select>
+                                </div>
+
+                                <div class="row form-group">
+                                    <label for="dataOut">Date the equipment is going out:</label>
+                                    <input type="date" class="form-control" name="dateOut" id="dateOut">
+                                </div>
+
+                                <div class="row form-group">
+                                    <label for="dateIn">Date the equipment is coming back:</label>
+                                    <input type="date" class="form-control" name="dateIn" id="dateIn">
+                                </div>
+                                <div class="row form-group">
+                                    <input type="submit" name="button" id="equipButton" value="Submit">
+                                </div>
+                            </form>
+                            </div>
+                            <div class="col-md-6">
+                            <form method="post" action="php/getEquipAndPeople.php" id="addPerson">
+                                <h4>Add People</h4>
+                                    <div class="row form-group">
+                                        <label for="personName">Name of Person:</label>
+                                        <input type="text" class="form-control" name="personName" id="personName">
+                                    </div>
+                                    <div class="row form-group">
+                                        <label for="lps">Person's LPS:</label>
+                                        <input type="text" class="form-control" name="lps" id="lps">
+                                    </div>
+                                    <div class="row">
+                                        <input type="submit" name="button" id="personButton" value="Submit">
+                                    </div>
+                            </form>
+                            </div>
+                    
+                        
+                        
+                        <div class="col-md-12" id="innerTabs">
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li class="active" role="presentation">
+                                    <a href="#equipRemove" data-toggle="tab" role="tab" aria-control="checkedOut">Remove Equipment</a>
+                                </li>
+                                <li>
+                                    <a href="#peopleRemove" data-toggle="tab" role="tab" aria-control="checkedOut">Remove People</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-12 tab-content">    
+                                <div id="equipRemove" class="tab-pane fade" role="tabpanel">
+                                    <ul id="equipRemoveList"></ul>
+                                </div>
+                                <div id="peopleRemove" class="tab-pane fade" role="tabpanel">
+                                    <ul id="peopleRemoveList"></ul>
+                                </div>
+
+                        </div>
+                        
+                        
+                </div>
+            </div>
+            </div>
+        </div>    
     </div>
-    <footer class="sixteen columns">&copy; 2014 Nathan Petts</footer>
-  </div>
+    
+    <div class="row col-md-12">
+    <footer>&copy; 2014 Nathan Petts</footer>
+    </div>
+    
   <script>
     // init code for jqueryUI
     $("#tabs").tabs();
